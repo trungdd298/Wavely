@@ -52,7 +52,7 @@ export function SignupForm({
                 <CardHeader className="text-center">
                     <CardTitle className="text-xl">Create your account</CardTitle>
                     <CardDescription>
-                        Enter your email below to create your account
+                        Enter your information below to create your account
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -60,17 +60,17 @@ export function SignupForm({
                         <FieldGroup>
                             <Field>
                                 <FieldLabel htmlFor="firstName">First Name</FieldLabel>
-                                <Input id="firstName" type="text" placeholder="John" required {...register("firstName")} />
+                                <Input id="firstName" type="text" placeholder="John" {...register("firstName")} />
                                 {errors.firstName && <p className="text-destructive text-sm">{errors.firstName.message}</p>}
                             </Field>
                             <Field>
                                 <FieldLabel htmlFor="lastName">Last Name</FieldLabel>
-                                <Input id="lastName" type="text" placeholder="Doe" required {...register("lastName")} />
+                                <Input id="lastName" type="text" placeholder="Doe" {...register("lastName")} />
                                 {errors.lastName && <p className="text-destructive text-sm">{errors.lastName.message}</p>}
                             </Field>
                             <Field>
                                 <FieldLabel htmlFor="userName">Username</FieldLabel>
-                                <Input id="userName" type="text" required {...register("userName")} />
+                                <Input id="userName" type="text" {...register("userName")} />
                                 {errors.userName && <p className="text-destructive text-sm">{errors.userName.message}</p>}
                             </Field>
                             <Field>
@@ -79,7 +79,7 @@ export function SignupForm({
                                     id="email"
                                     type="email"
                                     placeholder="m@example.com"
-                                    required
+                                
                                     {...register("email")}
                                 />
                                 {errors.email && <p className="text-destructive text-sm">{errors.email.message}</p>}
@@ -88,14 +88,14 @@ export function SignupForm({
                                 <Field className="grid grid-cols-2 gap-4">
                                     <Field>
                                         <FieldLabel htmlFor="password">Password</FieldLabel>
-                                        <Input id="password" type="password" required {...register("password")} />
+                                        <Input id="password" type="password" {...register("password")} />
                                         {errors.password && <p className="text-destructive text-sm">{errors.password.message}</p>}
                                     </Field>
                                     <Field>
                                         <FieldLabel htmlFor="confirm-password">
                                             Confirm Password
                                         </FieldLabel>
-                                        <Input id="confirm-password" type="password" required {...register("confirmPassword")} />
+                                        <Input id="confirm-password" type="password" {...register("confirmPassword")} />
                                         {errors.confirmPassword && <p className="text-destructive text-sm">{errors.confirmPassword.message}</p>}
                                     </Field>
                                 </Field>
@@ -106,7 +106,7 @@ export function SignupForm({
                             <Field>
                                 <Button type="submit" disabled={isSubmitting}>Create Account</Button>
                                 <FieldDescription className="text-center">
-                                    Already have an account? <a href="#">Sign in</a>
+                                    Already have an account? <a href="/signin">Sign in</a>
                                 </FieldDescription>
                             </Field>
                         </FieldGroup>
