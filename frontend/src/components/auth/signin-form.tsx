@@ -17,6 +17,8 @@ import { Input } from "@/components/ui/input"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useAuthStore } from "@/stores/useAuthStore"
+import { useNavigate } from "react-router"
 
 const signInSchema = z.object({
     userName: z.string().min(3, 'Username is required'),
@@ -29,13 +31,20 @@ export function SigninForm({
     className,
     ...props
 }: React.ComponentProps<"div">) {
+    
+    const { signIn } = useAuthStore();
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors , isSubmitting } } = useForm<SignInFormTypes>({
             resolver: zodResolver(signInSchema),
         });
         
-    const onSubmit = (data: SignInFormTypes) => {
-        // call backend API to create account
+    const onSubmit = async (data: SignInFormTypes) => {
+        const { userName, password } = data;
         
+        // call backend API to create account
+        await signIn(userName, password);
+        
+        navigate("/");
     };
     
     return (
